@@ -1,0 +1,27 @@
+.banniere.defilement {
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	border: 1px solid #000;
+	background-color: #f0f0f0;
+	padding: 10px;
+	font-size: 20px;
+}
+
+.banniere.teletype {
+	width: 20ch;
+	/* Largeur fixe de 20 caractères */
+	font-family: monospace;
+	/* Police à largeur fixe */
+	border: 1px solid #000;
+	background-color: #f0f0f0;
+	padding: 10px 0;
+	white-space: pre;
+	overflow: hidden;
+	display: inline-block;
+
+	&:empty::before {
+		content: ' ';
+		color: #999;
+	}
+}
