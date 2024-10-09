@@ -21,13 +21,10 @@ export default class App {
 			document.querySelector('.banniere.teletype').style.width = `${longueur}ch`;
 
 			// Si un ticker est déjà en cours, on l'arrête pour éviter les conflits
-			if (this.intervalBanniere) {
-				clearInterval(this.intervalBanniere); // Arrête le ticker existant
-				this.intervalBanniere = null;        // Réinitialise la variable pour permettre un nouveau ticker
-			} else {
+				// Arrête le ticker existant
+				// Réinitialise la variable pour permettre un nouveau ticker
+			// Sinon, on démarre un nouveau ticker
 				// Démarre un nouveau ticker avec le texte et la longueur spécifiés
-				this.demarrer(texte, longueur);
-			}
 		});
 
 		// Ajoute la bannière à l'application (en bas de la page)
@@ -122,29 +119,19 @@ export default class App {
 	 */
 	static demarrer(texte, longueur = 20) {
 		// Récupère l'élément de la bannière dans le DOM
-		const divBanniere = document.querySelector('.banniere.teletype');
 
 		// Initialisation de l'index courant pour gérer le défilement
-		let indexCourant = 0;
 
 		// Ajoute des espaces au début du texte pour un défilement fluide au démarrage
-		texte = ' '.repeat(longueur) + texte;
 
 		// Utilise setInterval pour faire défiler le texte à intervalles réguliers
-		this.intervalBanniere = setInterval(() => {
 			// Crée la portion de texte visible avec la longueur spécifiée
-			const texteVisible = (texte + texte).slice(indexCourant).slice(0, longueur);
 
 			// Met à jour le contenu de la bannière avec la portion visible du texte
-			divBanniere.textContent = texteVisible;
 
 			// Incrémente l'index pour faire défiler le texte
-			indexCourant++;
 
 			// Si la fin du texte est atteinte, on recommence au début
-			if (indexCourant > texte.length) {
-				indexCourant = 0;
-			}
-		}, 200); // Intervalle de 200 ms pour la vitesse de défilement
+		// Intervalle de 200 ms pour la vitesse de défilement
 	}
 }
